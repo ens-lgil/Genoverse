@@ -1,6 +1,6 @@
 Genoverse.Plugins.controlPanel = function () {
   var genoverse = this;
-
+  var extra_class = 'gv-button-medium ';
   this.controls = [
     // Scroll left/right
     {
@@ -8,11 +8,11 @@ Genoverse.Plugins.controlPanel = function () {
       buttons : [{
         name    : 'Scroll left',
         icon    : '<i class="fa fa-chevron-left"></i>',
-        'class' : 'gv-scroll-left'
+        'class' : extra_class+'gv-scroll-left'
       }, {
         name    : 'Scroll right',
         icon    : '<i class="fa fa-chevron-right"></i>',
-        'class' : 'gv-scroll-right'
+        'class' : extra_class+'gv-scroll-right'
       }],
       init: function (browser) {
         var el = $(this);
@@ -38,12 +38,12 @@ Genoverse.Plugins.controlPanel = function () {
       buttons : [{
         name    : 'Zoom in',
         icon    : '<i class="fa fa-search-plus"></i>',
-        'class' : 'gv-zoom-in',
+        'class' : extra_class+'gv-zoom-in',
         action  : function (browser) { browser.zoomIn(); }
       }, {
         name    : 'Zoom out',
         icon    : '<i class="fa fa-search-minus"></i>',
-        'class' : 'gv-zoom-out',
+        'class' : extra_class+'gv-zoom-out',
         action  : function (browser) { browser.zoomOut(); }
       }]
     },
@@ -54,7 +54,7 @@ Genoverse.Plugins.controlPanel = function () {
       buttons : [{
         name    : 'Mouse drag action to scroll the browser left or right',
         icon    : '<i class="fa fa-arrows-h"></i>',
-        'class' : 'gv-drag-scroll',
+        'class' : extra_class+'gv-drag-scroll',
         action  : function (browser) {
           browser.setDragAction('scroll');
           $(this).addClass('gv-active').siblings().removeClass('gv-active');
@@ -62,7 +62,7 @@ Genoverse.Plugins.controlPanel = function () {
       }, {
         name    : 'Mouse drag action to select a region',
         icon    : '<i></i>',
-        'class' : 'gv-drag-select',
+        'class' : extra_class+'gv-drag-select',
         action  : function (browser) {
           browser.setDragAction('select');
           $(this).addClass('gv-active').siblings().removeClass('gv-active');
@@ -79,7 +79,7 @@ Genoverse.Plugins.controlPanel = function () {
       buttons : [{
         name    : 'Mouse wheel action to scroll the page up and down',
         icon    : '<i class="fa fa-arrows-v"></i>',
-        'class' : 'gv-wheel-off',
+        'class' : extra_class+'gv-wheel-off',
         action  : function (browser) {
           browser.setWheelAction('off');
           $(this).addClass('gv-active').siblings().removeClass('gv-active');
@@ -87,7 +87,7 @@ Genoverse.Plugins.controlPanel = function () {
       }, {
         name    : 'Mouse wheel to zoom in and out',
         icon    : '&#177;',
-        'class' : 'gv-wheel-zoom',
+        'class' : extra_class+'gv-wheel-zoom',
         action  : function (browser) {
           browser.setWheelAction('zoom');
           $(this).addClass('gv-active').siblings().removeClass('gv-active');

@@ -59,7 +59,7 @@ Genoverse.Plugins.fullscreen = function () {
   if (supported) {
     browser.controls.push({
       icon    : '<i class="fa fa-expand"></i>',
-      'class' : 'gv-fullscreen-button',
+      'class' : 'gv-button-medium gv-button-font-medium gv-fullscreen-button',
       name    : 'Toggle fullscreen view',
       action  : function (browser) {
         if (browser.superContainer.hasClass('gv-fullscreen')) {

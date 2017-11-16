@@ -2,6 +2,7 @@
   position: relative;
   margin-bottom: 30px;
   border-collapse: separate;
+  border-bottom: none;
 }
 
 .gv-control-panel-plugin table.gv td {
@@ -12,8 +13,7 @@
 
 .gv-control-panel-plugin .gv-panel {
   height: 100%;
-  background-color: #5F8CB0;
-  border: 1px solid #1C5380;
+  background-color: #3C3F45;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 3px rgba(0, 0, 0, 0.1), -2px 0 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,15 +24,19 @@
 .gv-control-panel-plugin .gv-panel button {
   background: none;
   border: none;
-  border-bottom: 1px solid #1C5380;
+  border-bottom: 1px solid #1C9BCF;
   color: #E2E9EF;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
   width: 30px;
   height: 50px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 20px;
   padding: 2px;
   margin: 0;
+}
+
+.gv-control-panel-plugin .gv-panel-right .gv-button-set:last-child button {
+  border-bottom: none;
 }
 
 .gv-control-panel-plugin .gv-panel button:only-child {
@@ -40,12 +44,26 @@
 }
 
 .gv-control-panel-plugin .gv-panel div.gv-button-set > button:not(:first-child) {
-  border-left: 1px solid #1C5380;
+  border-left: 1px solid #1C9BCF;
 }
 
 .gv-control-panel-plugin .gv-panel button.gv-button-large {
   font-size: 25px;
 }
+
+.gv-control-panel-plugin .gv-panel button.gv-button-normal {
+  height: 40px;
+}
+
+.gv-control-panel-plugin .gv-panel button.gv-button-medium {
+  height: 35px;
+}
+
+.gv-control-panel-plugin .gv-panel button.gv-button-font-medium {
+  font-size: 18px;
+}
+
+
 
 .gv-control-panel-plugin .gv-panel div.gv-button-set:not(:first-child) > button {
   box-shadow: 0 1px 1px rgba(255, 255, 255, 0.12) inset;
@@ -64,13 +82,11 @@
 .gv-control-panel-plugin .gv-panel button:active,
 .gv-control-panel-plugin .gv-panel button.gv-active {
   border-top: none;
-  background-color: rgba(6, 54, 95, 0.35);
-  box-shadow: 0 0 1px rgba(6, 54, 95, 0.8) inset !important;
+  background-color: rgba(6, 76, 117, 0.5);
+  box-shadow: 0 0 1px rgba(6, 76, 117, 0.8) inset !important;
 }
 
 .gv-control-panel-plugin .gv-panel-right {
-  background-image: -webkit-linear-gradient(left, #5F8CB0, #4A7496);
-  background-image: -moz-linear-gradient(left center, #5F8CB0, #4A7496);
   border-radius: 0 5px 5px 0;
   border-left: 0;
 }
@@ -86,8 +102,6 @@
 }
 
 .gv-control-panel-plugin .gv-panel-left {
-  background-image: -webkit-linear-gradient(right, #5F8CB0, #4A7496);
-  background-image: -moz-linear-gradient(right center, #5F8CB0, #4A7496);
   border-radius: 5px 0 0 5px;
   border-right: 0;
 }
@@ -138,7 +152,8 @@
   white-space: nowrap;
   padding: 5px 30px 5px 10px;
   margin-bottom: 5px;
-  background: rgba(6, 54, 95, 0.35);
+  background: #3C3F45;
+  border-bottom: 2px solid #1C9BCF;
   line-height: normal;
 }
 
@@ -153,6 +168,7 @@
 .gv-control-panel-plugin .gv-tracks-menu .gv-tracks-library-item,
 .gv-control-panel-plugin .gv-tracks-menu .gv-current-tracks {
   white-space: nowrap;
+  color: #3C3F45;
 }
 
 .gv-control-panel-plugin .gv-tracks-menu .gv-current-tracks.ui-sortable {
@@ -163,6 +179,11 @@
 .gv-control-panel-plugin .gv-tracks-menu .gv-add-track {
   font-size: 14px;
   margin: 2px 5px 0 0;
+  color: #1C9BCF;
+}
+.gv-control-panel-plugin .gv-tracks-menu .gv-remove-track:hover,
+.gv-control-panel-plugin .gv-tracks-menu .gv-add-track:hover {
+  color: #9051A0;
 }
 
 .gv-control-panel-plugin .gv-tracks-menu input {

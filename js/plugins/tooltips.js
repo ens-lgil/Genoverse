@@ -43,7 +43,7 @@ Genoverse.Plugins.tooltips = function () {
 
   this.controls.push({
     icon    : '<i class="fa fa-info-circle"></i>',
-    'class' : 'gv-tooltips',
+    'class' : 'gv-button-medium gv-tooltips',
     name    : 'Tooltips',
     action  : toggleTooltips
   });

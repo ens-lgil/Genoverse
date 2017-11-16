@@ -21,8 +21,10 @@ Genoverse.Track.Model.Transcript.Ensembl = Genoverse.Track.Model.Transcript.exte
       if (!featuresById[feature.id]) {
         model.geneIds[feature.Parent] = model.geneIds[feature.Parent] || ++model.seenGenes;
 
+        var label = (feature.external_name) ? feature.external_name + ' (' + feature.id + ')' : feature.id;
+
         feature.chr         = feature.chr || chr;
-        feature.label       = parseInt(feature.strand, 10) === 1 ? (feature.external_name || feature.id) + ' >' : '< ' + (feature.external_name || feature.id);
+        feature.label       = parseInt(feature.strand, 10) === 1 ? label + ' >' : '< ' + label;
         feature.sort        = (model.geneIds[feature.Parent] * 1e10) + (feature.logic_name.indexOf('ensembl_havana') === 0 ? 0 : 2e9) + (feature.biotype === 'protein_coding' ? 0 : 1e9) + feature.start + i;
         feature.cdsStart    = Infinity;
         feature.cdsEnd      = -Infinity;

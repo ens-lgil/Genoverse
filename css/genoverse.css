@@ -55,7 +55,6 @@
 .gv-canvas-container .gv-track-container .gv-scroll-container-offset {
   height: 100%;
   overflow: hidden;
-  position: absolute;
   /*
     margin-left to be set in the track, with the gv-scroll-container being given a margin-left of -(this element's margin-left) to hide the first n pixels of the scroll container.
     Used to stop a track with a vertical scalebar at its left edge from displaying features on top of the scalebar
@@ -82,7 +81,8 @@
 
 .gv-canvas-container .gv-message-container .gv-messages {
   float: right;
-  padding: 0 5px;
+  padding-right: 10px;
+  padding-left: 15px;
   margin-bottom: -6px;
 }
 
@@ -95,11 +95,18 @@
   text-decoration: underline;
 }
 
+.gv-canvas-container .gv-message-container .gv-control {
+  position: absolute;
+  height: 14px;
+  cursor: pointer;
+}
+
 .gv-canvas-container .gv-message-container .gv-control:hover { text-decoration: underline; }
 .gv-canvas-container .gv-message-container .gv-expand,
 .gv-canvas-container .gv-message-container.gv-collapsed .gv-messages,
 .gv-canvas-container .gv-message-container.gv-collapsed .gv-collapse { display: none; }
-.gv-canvas-container .gv-message-container.gv-collapsed .gv-expand   { display: inline; }
+.gv-canvas-container .gv-message-container .gv-collapse              { display: inline; }
+.gv-canvas-container .gv-message-container.gv-collapsed .gv-expand   { display: inline; position: relative; }
 
 .gv-canvas-container .gv-image-container {
   height: 100%;
@@ -196,15 +203,15 @@
 }
 
 .gv-label-container li:not(:first-child) {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 -1px 0 #38688F inset
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 -1px 0 #1C9BCF inset
 }
 
 .gv-label-container li .gv-name {
   float: left;
-  position: absolute;
+  position: relative;
   overflow: hidden;
   margin: 8px 0;
-  left: 15px;
+  left: 5px;
   width: 85%;
   color: #F2F5F7;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
@@ -212,6 +219,10 @@
   font-size: 11px;
   font-weight: bold;
   white-space: pre-wrap;
+}
+
+.gv-label-container li.gv-unsortable .gv-name {
+  left: 15px;
 }
 
 .gv-label-container li.gv-line-break .gv-name {
@@ -239,8 +250,7 @@
   border-color: #000;
 }
 
-.gv-canvas-container .gv-wrapper > :last-child.gv-track-container-legend .gv-track-border,
-.gv-canvas-container .gv-wrapper > :last-child.gv-track-super-container > :last-child.gv-track-container-legend .gv-track-border {
+.gv-canvas-container .gv-wrapper > :last-child.gv-track-container-legend .gv-track-border {
   display: none;
 }
 
@@ -277,7 +287,7 @@
 
 .gv-menu {
   color: white;
-  background-color: #5F8CB0;
+  background-color: #FFF;
   border-radius: 0px 12px 12px 12px;
   min-width: 200px;
   padding: 0;
@@ -300,7 +310,8 @@
 }
 
 .gv-menu .gv-menu-content a {
-  color: white;
+  color: #3C3F45;
+  text-decoration: underline;
 }
 
 .gv-menu .gv-menu-content table {
@@ -309,27 +320,44 @@
   margin: 10px;
 }
 
+
 .gv-menu .gv-menu-content table th,
 .gv-menu .gv-menu-content table td {
-  color: #FFF;
-  padding: 0 1em 0 0;
+  color: #3C3F45;
+  padding: 2px 1em 0 2px;
   border: none;
   text-align: left;
   vertical-align: top;
   max-width: 32em;
 }
 
+.gv-menu .gv-menu-content table td:last-child {
+  font-weight:bold;
+}
+
+.gv-menu-title {
+  color: #FFF;
+}
+
 .gv-menu .gv-menu-content .gv-title {
   font-weight: bold;
   padding: 5px 10px 0 10px;
   margin-bottom: 5px;
+  color: #3C3F45;
 }
 
 .gv-menu .gv-menu-content-first .gv-title {
-  background: rgba(6, 54, 95, 0.35);
+  background-color: #3C3F45;
+  border-bottom: 2px solid #1C9BCF;
+  color: #FFF;
+  font-size: 12px;
   border-radius: 0 12px 0 0;
   padding: 5px 30px 5px 10px;
   line-height: normal;
+}
+.gv-menu .gv-menu-content-first .gv-title a {
+  color: #FFF;
+  text-decoration: none;
 }
 
 .gv-menu .gv-menu-content .gv-focus,
@@ -356,16 +384,6 @@
 
 .gv-menu .gv-menu-content input {
   color: #000;
-}
-
-.gv-menu .gv-menu-content .gv-menu-scroll-wrapper {
-  max-height: 300px;
-  overflow-y: auto;
-  margin: 10px 10px 10px 0;
-}
-
-.gv-menu .gv-menu-content .gv-menu-scroll-wrapper table {
-  margin: 0 10px;
 }
 
 .gv-selector {
@@ -442,14 +460,13 @@
   line-height: 1em;
 }
 
-.gv-canvas-container .gv-track-container canvas.gv-barchart-axis,
-.gv-canvas-container .gv-track-container canvas.gv-barchart-guide {
+.gv-canvas-container .gv-track-container canvas.gv-barchart-scalebar,
+.gv-canvas-container .gv-track-container canvas.gv-barchart-scalelines {
   display: block!important;
   height: auto;
   bottom: 0;
-  z-index: 1;
 }
 
-.gv-hide {
-  display: none!important;
+.gv-canvas-container .gv-track-container canvas.gv-barchart-scalebar {
+  z-index: 1;
 }
