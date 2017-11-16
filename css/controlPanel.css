@@ -138,7 +138,7 @@
 }
 
 .gv-control-panel-plugin .gv-tracks-menu table {
-  margin: 0 0 10px;
+  margin: 0 0 10px !important;
 }
 
 .gv-control-panel-plugin .gv-tracks-menu td {
