@@ -1,6 +1,6 @@
 'use strict';
 
-global.jQuery = global.$ = require(__dirname + '/js/lib/jquery.js');
+//global.jQuery = global.$ = require(__dirname + '/js/lib/jquery.js');
 require(__dirname + '/js/lib/jquery-ui.js');
 require(__dirname + '/js/lib/jquery.mousewheel.js');
 require(__dirname + '/js/lib/jquery.mousehold.js');
