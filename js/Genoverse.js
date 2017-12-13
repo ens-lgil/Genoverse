@@ -1,6 +1,7 @@
 var Genoverse = Base.extend({
   // Defaults
   urlParamTemplate   : 'r=__CHR__:__START__-__END__', // Overwrite this for your URL style
+  urlRestPrefix      : '//rest.ensembl.org',          // Prefix of the Ensembl REST URL
   width              : 1000,
   longestLabel       : 30,
   defaultLength      : 5000,
@@ -55,7 +56,12 @@ var Genoverse = Base.extend({
 
   loadGenome: function () {
     if (typeof this.genome === 'string') {
-      var genomeName = this.genome;
+      var genomeName = this.genome.toLowerCase();
+
+      // Check genome to point to the corresponding REST Ensembl URL
+      if (genomeName.indexOf('grch37') == 0) {
+        this.urlRestPrefix = '//grch37.rest.ensembl.org';
+      }
 
       return $.ajax({
         url      : Genoverse.origin + 'js/genomes/' + genomeName + '.js',

@@ -42,13 +42,17 @@ require(__dirname + '/js/Track/Model/SequenceVariation.js');
 
 require(__dirname + '/js/Track/Model/Gene.js');
 require(__dirname + '/js/Track/Model/Gene/Ensembl.js');
+require(__dirname + '/js/Track/Model/Gene/RefSeq.js');
 require(__dirname + '/js/Track/View/Gene.js');
 require(__dirname + '/js/Track/View/Gene/Ensembl.js');
+require(__dirname + '/js/Track/View/Gene/RefSeq.js');
 
 require(__dirname + '/js/Track/Model/Transcript.js');
 require(__dirname + '/js/Track/Model/Transcript/Ensembl.js');
+require(__dirname + '/js/Track/Model/Transcript/RefSeq.js');
 require(__dirname + '/js/Track/View/Transcript.js');
 require(__dirname + '/js/Track/View/Transcript/Ensembl.js');
+require(__dirname + '/js/Track/View/Transcript/RefSeq.js');
 
 require(__dirname + '/js/Track/Model/File.js');
 require(__dirname + '/js/Track/Model/File/BAM.js');
@@ -74,6 +78,7 @@ require(__dirname + '/js/Track/library/File/WIG.js');
 require(__dirname + '/js/Track/library/Gene.js');
 require(__dirname + '/js/Track/library/HighlightRegion.js');
 require(__dirname + '/js/Track/library/Legend.js');
+require(__dirname + '/js/Track/library/RefSeqGene.js');
 require(__dirname + '/js/Track/library/Scaleline.js');
 require(__dirname + '/js/Track/library/Scalebar.js');
 

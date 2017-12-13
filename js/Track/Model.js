@@ -4,6 +4,8 @@ Genoverse.Track.Model = Base.extend({
   dataBuffer       : undefined, // e.g. { start: 0, end: 0 } - basepairs to extend data region for, when getting data from the origin
   xhrFields        : undefined,
   url              : undefined,
+  urlRestPrefix    : undefined,
+  urlRestSuffix    : undefined,
   urlParams        : undefined, // hash of URL params
   data             : undefined, // if defined, will be used instead of fetching data from a source
   dataRequestLimit : undefined, // if defined, multiple requests will be made by getData if the region size exceeds its value
@@ -34,13 +36,17 @@ Genoverse.Track.Model = Base.extend({
   },
 
   setDefaults: function (reset) {
-    this.dataBuffer = this.dataBuffer || { start: 0, end: 0 }; // basepairs to extend data region for, when getting data from the origin
-    this.urlParams  = this.urlParams  || {};                   // hash of URL params
-    this.xhrFields  = this.xhrFields  || {};
+    this.dataBuffer    = this.dataBuffer || { start: 0, end: 0 };          // basepairs to extend data region for, when getting data from the origin
+    this.urlRestPrefix = this.urlRestPrefix || this.browser.urlRestPrefix; // REST URL prefix
+    this.urlParams     = this.urlParams  || {};                            // hash of URL params
+    this.xhrFields     = this.xhrFields  || {};
 
     this.dataBufferStart = this.dataBuffer.start; // Remember original dataBuffer.start, since dataBuffer.start is updated based on browser scale, in setLabelBuffer
 
     if (!this._url) {
+      if (!this.url && this.urlRestPrefix && this.urlRestSuffix) {
+        this.url = this.urlRestPrefix+this.urlRestSuffix;
+      }
       this._url = this.url; // Remember original url
     }
 

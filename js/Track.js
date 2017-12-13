@@ -59,6 +59,12 @@ Genoverse.Track = Base.extend({
     this.height           += this.margin;
     this.initialHeight     = this.height;
 
+    // Recompose the url if only the REST URL prefix and suffix are provided.
+    this.urlRestPrefix = this.urlRestPrefix || this.browser.urlRestPrefix;
+    if (!this.url && this.urlRestPrefix && this.urlRestSuffix) {
+      this.url = this.urlRestPrefix+this.urlRestSuffix;
+    }
+
     if (this.resizable === 'auto') {
       this.autoHeight = true;
     }
