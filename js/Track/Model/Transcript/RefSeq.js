@@ -18,7 +18,7 @@ Genoverse.Track.Model.Transcript.RefSeq = Genoverse.Track.Model.Transcript.exten
     var ids          = [];
 
     data.filter(function (d) { return d.feature_type === 'transcript'; }).forEach(function (feature, i) {
-      if (feature.source == 'BestRefSeq') { // || feature.source == 'refseq') {
+      if (feature.source == 'BestRefSeq' && (feature.id.indexOf('NM_') != -1 || feature.id.indexOf('NR_') != -1) && feature.id.indexOf('XM_') == -1) { // || feature.source == 'refseq') {
         if (!featuresById[feature.id]) {
           model.geneIds[feature.Parent] = model.geneIds[feature.Parent] || ++model.seenGenes;
 
