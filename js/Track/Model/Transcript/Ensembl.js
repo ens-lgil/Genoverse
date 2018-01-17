@@ -17,7 +17,7 @@ Genoverse.Track.Model.Transcript.Ensembl = Genoverse.Track.Model.Transcript.exte
     var featuresById = this.featuresById;
     var ids          = [];
 
-    data.filter(function (d) { return d.feature_type === 'transcript'; }).forEach(function (feature, i) {
+    data.filter(function (d) { return (d.feature_type === 'transcript' && d.biotype === 'protein_coding'); }).forEach(function (feature, i) {
       if (!featuresById[feature.id]) {
         model.geneIds[feature.Parent] = model.geneIds[feature.Parent] || ++model.seenGenes;
 

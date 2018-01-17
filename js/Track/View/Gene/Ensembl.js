@@ -19,7 +19,7 @@ Genoverse.Track.View.Gene.Ensembl = Genoverse.Track.View.Gene.extend({
 
     if (feature.logic_name.indexOf('ensembl_havana') === 0) {
       feature.color  = '#CD9B1D';
-      feature.legend = 'Merged Ensembl/Havana';
+      feature.legend = 'Merged Ensembl/Havana (protein coding)';
     } else if (processed_transcript[feature.biotype]) {
       feature.color  = '#0000FF';
       feature.legend = 'Processed transcript';
