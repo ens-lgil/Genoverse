@@ -1,7 +1,7 @@
 var Genoverse = Base.extend({
   // Defaults
   urlParamTemplate   : 'r=__CHR__:__START__-__END__', // Overwrite this for your URL style
-  urlRestPrefix      : '//rest.ensembl.org',          // Prefix of the Ensembl REST URL
+  urlRestPrefix      : 'https://rest.ensembl.org',    // Prefix of the Ensembl REST URL
   width              : 1000,
   longestLabel       : 30,
   defaultLength      : 5000,
