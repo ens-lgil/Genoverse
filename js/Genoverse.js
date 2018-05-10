@@ -60,7 +60,7 @@ var Genoverse = Base.extend({
 
       // Check genome to point to the corresponding REST Ensembl URL
       if (genomeName.indexOf('grch37') == 0) {
-        this.urlRestPrefix = '//grch37.rest.ensembl.org';
+        this.urlRestPrefix = 'https://grch37.rest.ensembl.org';
       }
 
       return $.ajax({
