@@ -16,13 +16,15 @@ Genoverse.Track.Model.Transcript.RefSeq = Genoverse.Track.Model.Transcript.exten
     var model        = this;
     var featuresById = this.featuresById;
     var ids          = [];
-
+    var rs_source    = 'BestRefSeq';
+    
     data.filter(function (d) { return d.feature_type === 'transcript'; }).forEach(function (feature, i) {
-      if (feature.source == 'BestRefSeq' && (feature.id.indexOf('NM_') != -1 || feature.id.indexOf('NR_') != -1) && feature.id.indexOf('XM_') == -1) { // || feature.source == 'refseq') {
+      var feature_id = String(feature.id);
+      if (feature.source == rs_source && (feature_id.indexOf('NM_') != -1 || feature_id.indexOf('NR_') != -1)) { // || feature.source == 'refseq') {
         if (!featuresById[feature.id]) {
           model.geneIds[feature.Parent] = model.geneIds[feature.Parent] || ++model.seenGenes;
 
-          var label = (feature.external_name) ? feature.external_name + ' (' + feature.id + ')' : feature.id;
+          var label = (feature.external_name) ? feature.external_name + ' (' + feature_id + ')' : feature_id;
 
           feature.chr         = feature.chr || chr;
           feature.label       = parseInt(feature.strand, 10) === 1 ? label + ' >' : '< ' + label;
@@ -34,20 +36,19 @@ Genoverse.Track.Model.Transcript.RefSeq = Genoverse.Track.Model.Transcript.exten
 
           model.insertFeature(feature);
         }
-
         ids.push(feature.id);
       }
     });
 
     data.filter(function (d) { return d.feature_type === 'cds' && featuresById[d.Parent]; }).forEach(function (cds) {
-      if (cds.source == 'BestRefSeq') { // || cds.source == 'refseq') {
+      if (cds.source == rs_source) { // || cds.source == 'refseq') {
         featuresById[cds.Parent].cdsStart = Math.min(featuresById[cds.Parent].cdsStart, cds.start);
         featuresById[cds.Parent].cdsEnd   = Math.max(featuresById[cds.Parent].cdsEnd,   cds.end);
       }
     });
 
     data.filter(function (d) { return d.feature_type === 'exon' && featuresById[d.Parent] && !featuresById[d.Parent].exons[d.id]; }).forEach(function (exon) {
-      if (exon.source == 'BestRefSeq') { // || exon.source == 'refseq') {
+      if (exon.source == rs_source) { // || exon.source == 'refseq') {
         if (exon.end < featuresById[exon.Parent].cdsStart || exon.start > featuresById[exon.Parent].cdsEnd) {
           exon.utr = true;
         } else if (exon.start < featuresById[exon.Parent].cdsStart) {
