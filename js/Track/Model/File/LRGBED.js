@@ -32,8 +32,10 @@ Genoverse.Track.Model.File.LRGBED = Genoverse.Track.Model.File.BED.extend({
           strand_string = "Forward <span style=\"color:#00D\">&rarr;</span>";
         }
         label = label.replace(/\(/i, " (");
+        label = label.replace(/\|/, " | "); 
         var item_name = fields[3];
-            item_name = item_name.replace(/\(/i, " ("); 
+            item_name = item_name.replace(/\(/i, " (");
+            item_name = item_name.replace(/\|/, " | "); 
 
         var chr = fields[0];
             chr = chr.replace(/^chr/i, "");
