@@ -51,14 +51,18 @@ Genoverse.Track.Model.Transcript.RefSeq = Genoverse.Track.Model.Transcript.exten
       if (exon.source == rs_source) { // || exon.source == 'refseq') {
         if (exon.end < featuresById[exon.Parent].cdsStart || exon.start > featuresById[exon.Parent].cdsEnd) {
           exon.utr = true;
-        } else if (exon.start < featuresById[exon.Parent].cdsStart) {
-          featuresById[exon.Parent].subFeatures.push($.extend({ utr: true }, exon, { end: featuresById[exon.Parent].cdsStart }));
+        } else {
+          if (exon.start < featuresById[exon.Parent].cdsStart) {
+            featuresById[exon.Parent].subFeatures.push($.extend({ utr: true }, exon, { end: featuresById[exon.Parent].cdsStart }));
 
-          exon.start = featuresById[exon.Parent].cdsStart;
-        } else if (exon.end > featuresById[exon.Parent].cdsEnd) {
-          featuresById[exon.Parent].subFeatures.push($.extend({ utr: true }, exon, { start: featuresById[exon.Parent].cdsEnd }));
+            exon.start = featuresById[exon.Parent].cdsStart;
+          }
 
-          exon.end = featuresById[exon.Parent].cdsEnd;
+          if (exon.end > featuresById[exon.Parent].cdsEnd) {
+            featuresById[exon.Parent].subFeatures.push($.extend({ utr: true }, exon, { start: featuresById[exon.Parent].cdsEnd }));
+
+            exon.end = featuresById[exon.Parent].cdsEnd;
+          }
         }
 
         featuresById[exon.Parent].subFeatures.push(exon);
