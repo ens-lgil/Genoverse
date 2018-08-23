@@ -210,7 +210,9 @@ var Genoverse = Base.extend({
       this.addTracks();
     }
 
-    this.setRange(coords.start, coords.end);
+    if (this.width > 0) {
+      this.setRange(coords.start, coords.end);
+    }
 
     if (this.highlights.length) {
       this.addHighlights(this.highlights);
@@ -722,10 +724,6 @@ var Genoverse = Base.extend({
   },
 
   mouseup: function (e) {
-    if (!this.dragging) {
-      return false;
-    }
-
     switch (this.dragging) {
       case 'select' : this.stopDragSelect(e); break;
       case 'scroll' : this.stopDragScroll();  break;
